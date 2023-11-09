@@ -31,7 +31,7 @@ jobs:
         uses: actions/setup-node@v3
 
       - name: Remove previously generated code
-        run: cd gen && xargs rm -r < .openapi-generator/FILES && cd ..
+        run: cd gen && xargs rm -rf < .openapi-generator/FILES && cd ..
 
       - name: Generate go code from specs
         run: npx @openapitools/openapi-generator-cli generate -i $FILE_PATH -g go --additional-properties=generateInterfaces=true,hideGenerationTimestamp=true,isGoSubmodule=true,packageName=openapi -o gen
