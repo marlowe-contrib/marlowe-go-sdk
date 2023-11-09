@@ -1,4 +1,4 @@
-name: Automatically create python code to interact with the API
+name: Automatically create go code to interact with the API
 on: push
 
 env:
@@ -6,7 +6,7 @@ env:
 
 jobs:
   run:
-    name: Generate code python to interact with the API described in openapi.json
+    name: Generate code go to interact with the API described in openapi.json
     runs-on: ubuntu-latest
     steps:
       - name: Set file path
@@ -29,7 +29,7 @@ jobs:
       - name: Remove previously generated code
         run: cd gen && xargs rm -r < .openapi-generator/FILES && cd ..
 
-      - name: Generate python code from specs
+      - name: Generate go code from specs
         run: npx @openapitools/openapi-generator-cli generate -i $FILE_PATH -g go --additional-properties=generateInterfaces=true,hideGenerationTimestamp=true,isGoSubmodule=true,packageName=openapi -o gen
 
       - name: Commit changes
