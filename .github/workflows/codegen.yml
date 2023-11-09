@@ -1,6 +1,10 @@
 name: Go code from specs
 on: push
 
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
 env:
   FILE_PATH: openapi.json
 
