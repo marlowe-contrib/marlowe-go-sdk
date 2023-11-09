@@ -26,3 +26,4 @@ go.sum
 git_push.sh
 .gitignore
 .travis.yml
+test/*.go

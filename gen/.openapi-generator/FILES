@@ -355,5 +355,4 @@ model_value_one_of_8.go
 model_withdrawal.go
 model_withdrawal_header.go
 response.go
-test/api_default_test.go
 utils.go
