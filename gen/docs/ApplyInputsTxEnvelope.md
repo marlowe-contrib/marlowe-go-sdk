@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ContractId** | **string** | A reference to a transaction output with a transaction ID and index. | 
+**TransactionId** | **string** | The hex-encoded identifier of a Cardano transaction | 
 **Tx** | [**TextEnvelope**](TextEnvelope.md) |  | 
-**WithdrawalId** | **string** | The hex-encoded identifier of a Cardano transaction | 
 
 ## Methods
 
 ### NewApplyInputsTxEnvelope
 
-`func NewApplyInputsTxEnvelope(tx TextEnvelope, withdrawalId string, ) *ApplyInputsTxEnvelope`
+`func NewApplyInputsTxEnvelope(contractId string, transactionId string, tx TextEnvelope, ) *ApplyInputsTxEnvelope`
 
 NewApplyInputsTxEnvelope instantiates a new ApplyInputsTxEnvelope object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +26,46 @@ will change when the set of required properties is changed
 NewApplyInputsTxEnvelopeWithDefaults instantiates a new ApplyInputsTxEnvelope object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetContractId
+
+`func (o *ApplyInputsTxEnvelope) GetContractId() string`
+
+GetContractId returns the ContractId field if non-nil, zero value otherwise.
+
+### GetContractIdOk
+
+`func (o *ApplyInputsTxEnvelope) GetContractIdOk() (*string, bool)`
+
+GetContractIdOk returns a tuple with the ContractId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContractId
+
+`func (o *ApplyInputsTxEnvelope) SetContractId(v string)`
+
+SetContractId sets ContractId field to given value.
+
+
+### GetTransactionId
+
+`func (o *ApplyInputsTxEnvelope) GetTransactionId() string`
+
+GetTransactionId returns the TransactionId field if non-nil, zero value otherwise.
+
+### GetTransactionIdOk
+
+`func (o *ApplyInputsTxEnvelope) GetTransactionIdOk() (*string, bool)`
+
+GetTransactionIdOk returns a tuple with the TransactionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTransactionId
+
+`func (o *ApplyInputsTxEnvelope) SetTransactionId(v string)`
+
+SetTransactionId sets TransactionId field to given value.
+
 
 ### GetTx
 
@@ -44,26 +85,6 @@ and a boolean to check if the value has been set.
 `func (o *ApplyInputsTxEnvelope) SetTx(v TextEnvelope)`
 
 SetTx sets Tx field to given value.
-
-
-### GetWithdrawalId
-
-`func (o *ApplyInputsTxEnvelope) GetWithdrawalId() string`
-
-GetWithdrawalId returns the WithdrawalId field if non-nil, zero value otherwise.
-
-### GetWithdrawalIdOk
-
-`func (o *ApplyInputsTxEnvelope) GetWithdrawalIdOk() (*string, bool)`
-
-GetWithdrawalIdOk returns a tuple with the WithdrawalId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWithdrawalId
-
-`func (o *ApplyInputsTxEnvelope) SetWithdrawalId(v string)`
-
-SetWithdrawalId sets WithdrawalId field to given value.
 
 
 

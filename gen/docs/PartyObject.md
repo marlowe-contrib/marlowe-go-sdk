@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RoleToken** | **string** |  | 
-**Address** | **string** | A cardano address | 
+**Address** | **string** | A cardano address, in Bech32 format | 
 **Ref** | **string** | An arbitrary text identifier for an object in a Marlowe object bundle. | 
 
 ## Methods

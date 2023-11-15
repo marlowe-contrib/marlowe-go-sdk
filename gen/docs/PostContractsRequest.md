@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Contract** | [**PostContractsRequestContract**](PostContractsRequestContract.md) |  | 
 **Metadata** | **map[string]interface{}** |  | 
-**MinUTxODeposit** | **int64** |  | 
+**MinUTxODeposit** | Pointer to **int64** |  | [optional] 
 **Roles** | Pointer to [**RolesConfig**](RolesConfig.md) |  | [optional] 
 **Tags** | **map[string]interface{}** |  | 
 **Version** | [**MarloweVersion**](MarloweVersion.md) |  | 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewPostContractsRequest
 
-`func NewPostContractsRequest(contract PostContractsRequestContract, metadata map[string]interface{}, minUTxODeposit int64, tags map[string]interface{}, version MarloweVersion, ) *PostContractsRequest`
+`func NewPostContractsRequest(contract PostContractsRequestContract, metadata map[string]interface{}, tags map[string]interface{}, version MarloweVersion, ) *PostContractsRequest`
 
 NewPostContractsRequest instantiates a new PostContractsRequest object
 This constructor will assign default values to properties that have it defined,
@@ -89,6 +89,11 @@ and a boolean to check if the value has been set.
 
 SetMinUTxODeposit sets MinUTxODeposit field to given value.
 
+### HasMinUTxODeposit
+
+`func (o *PostContractsRequest) HasMinUTxODeposit() bool`
+
+HasMinUTxODeposit returns a boolean if a field has been set.
 
 ### GetRoles
 

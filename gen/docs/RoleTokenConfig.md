@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | **string** | A cardano address | 
+**Address** | **string** | A cardano address, in Bech32 format | 
 **Metadata** | [**TokenMetadata**](TokenMetadata.md) |  | 
+**Script** | **string** | The type of script receiving the role token. | 
 
 ## Methods
 
 ### NewRoleTokenConfig
 
-`func NewRoleTokenConfig(address string, metadata TokenMetadata, ) *RoleTokenConfig`
+`func NewRoleTokenConfig(address string, metadata TokenMetadata, script string, ) *RoleTokenConfig`
 
 NewRoleTokenConfig instantiates a new RoleTokenConfig object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *RoleTokenConfig) SetMetadata(v TokenMetadata)`
 
 SetMetadata sets Metadata field to given value.
+
+
+### GetScript
+
+`func (o *RoleTokenConfig) GetScript() string`
+
+GetScript returns the Script field if non-nil, zero value otherwise.
+
+### GetScriptOk
+
+`func (o *RoleTokenConfig) GetScriptOk() (*string, bool)`
+
+GetScriptOk returns a tuple with the Script field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScript
+
+`func (o *RoleTokenConfig) SetScript(v string)`
+
+SetScript sets Script field to given value.
 
 
 
