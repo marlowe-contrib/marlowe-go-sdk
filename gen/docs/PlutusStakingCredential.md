@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**StakingHash** | [**[]PlutusStakingCredentialOneOf1StakingHashInner**](PlutusStakingCredentialOneOf1StakingHashInner.md) |  | 
+**StakingHash** | **[]int32** |  | 
 
 ## Methods
 
 ### NewPlutusStakingCredential
 
-`func NewPlutusStakingCredential(stakingHash []PlutusStakingCredentialOneOf1StakingHashInner, ) *PlutusStakingCredential`
+`func NewPlutusStakingCredential(stakingHash []int32, ) *PlutusStakingCredential`
 
 NewPlutusStakingCredential instantiates a new PlutusStakingCredential object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetStakingHash
 
-`func (o *PlutusStakingCredential) GetStakingHash() []PlutusStakingCredentialOneOf1StakingHashInner`
+`func (o *PlutusStakingCredential) GetStakingHash() []int32`
 
 GetStakingHash returns the StakingHash field if non-nil, zero value otherwise.
 
 ### GetStakingHashOk
 
-`func (o *PlutusStakingCredential) GetStakingHashOk() (*[]PlutusStakingCredentialOneOf1StakingHashInner, bool)`
+`func (o *PlutusStakingCredential) GetStakingHashOk() (*[]int32, bool)`
 
 GetStakingHashOk returns a tuple with the StakingHash field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStakingHash
 
-`func (o *PlutusStakingCredential) SetStakingHash(v []PlutusStakingCredentialOneOf1StakingHashInner)`
+`func (o *PlutusStakingCredential) SetStakingHash(v []int32)`
 
 SetStakingHash sets StakingHash field to given value.
 
