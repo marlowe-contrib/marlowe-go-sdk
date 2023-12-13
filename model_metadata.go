@@ -109,6 +109,10 @@ func (dst *Metadata) UnmarshalJSON(data []byte) error {
 	}
 
 	if match > 1 { // more than 1 match
+		// if matches are nil, then no data matched
+		if(dst.ArrayOfMetadata == nil && dst.Int32 == nil && dst.MapmapOfStringMetadata == nil && dst.String == nil) {
+			return nil
+		}
 		// reset to nil
 		dst.ArrayOfMetadata = nil
 		dst.Int32 = nil
