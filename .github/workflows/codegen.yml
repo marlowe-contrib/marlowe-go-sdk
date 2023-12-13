@@ -33,7 +33,7 @@ jobs:
 
       - name: Remove previously generated code
         if: ENV.API_SPECS_CHANGED
-        run: cd gen && xargs rm -rf < .openapi-generator/FILES && cd ..
+        run: xargs rm -rf < .openapi-generator/FILES
 
       - name: Generate go code from specs
         if: ENV.API_SPECS_CHANGED

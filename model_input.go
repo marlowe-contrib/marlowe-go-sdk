@@ -150,6 +150,15 @@ func (dst *Input) UnmarshalJSON(data []byte) error {
 		dst.NotifyInput = nil
 	}
 
+	if dst.DepositInput != nil && dst.DepositContinuationInput != nil {
+		// ignore continuation input if it's a false match (DepositInput is a subset of DepositContinuationInput)
+		if(dst.DepositContinuationInput.ContinuationHash == "" ){
+			dst.DepositContinuationInput = nil
+		}
+		match--
+	
+	}
+
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.ChoiceContinuationInput = nil

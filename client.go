@@ -35,7 +35,7 @@ import (
 )
 
 var (
-	jsonCheck = regexp.MustCompile(`(?i:(?:application|text)/(?:vnd\.[^;]+\+)?json)`)
+	jsonCheck = regexp.MustCompile(`(?i:(?:application|text)/(?:json;charset=utf-8|vendor.iog.*tx-json))`)
 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
 	queryParamSplit = regexp.MustCompile(`(^|&)([^&]+)`)
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
@@ -472,6 +472,7 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 		}
 		return nil
 	}
+	fmt.Println("JSON check failed? ", contentType, jsonCheck.MatchString(contentType))
 	return errors.New("undefined response type")
 }
 

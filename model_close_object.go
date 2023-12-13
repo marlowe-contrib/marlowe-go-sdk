@@ -20,7 +20,7 @@ type CloseObject string
 
 // List of CloseObject
 const (
-	CLOSE CloseObject = "close"
+	CLOSE_OBJECT CloseObject = "close"
 )
 
 // All allowed values of CloseObject enum
