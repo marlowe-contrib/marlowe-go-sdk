@@ -1504,6 +1504,7 @@
             "type": "array"
           },
           "minTime": {
+            "format": "int64",
             "type": "integer"
           }
         },

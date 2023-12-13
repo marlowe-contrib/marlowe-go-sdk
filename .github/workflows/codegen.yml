@@ -37,7 +37,7 @@ jobs:
 
       - name: Generate go code from specs
         if: ENV.API_SPECS_CHANGED
-        run: npx @openapitools/openapi-generator-cli generate -i $FILE_PATH -g go --additional-properties=generateInterfaces=true,hideGenerationTimestamp=true,isGoSubmodule=true,packageName=openapi -o gen
+        run: npx @openapitools/openapi-generator-cli generate -i $FILE_PATH -g go --additional-properties=generateInterfaces=true,hideGenerationTimestamp=true,packageName=marloweruntime --git-host github.com --git-user-id marlowe-contrib --git-repo-id marlowe-go-sdk
 
       - name: Create pull request
         if: ENV.API_SPECS_CHANGED
