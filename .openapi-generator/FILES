@@ -1,7 +1,3 @@
-.gitignore
-.openapi-generator-ignore
-.travis.yml
-README.md
 api/openapi.yaml
 api_default.go
 client.go
@@ -196,9 +192,6 @@ docs/WithdrawTxBodyEnvelope.md
 docs/WithdrawTxEnvelope.md
 docs/Withdrawal.md
 docs/WithdrawalHeader.md
-git_push.sh
-go.mod
-go.sum
 model_account_token_tuple_inner.go
 model_action.go
 model_action_object.go
@@ -389,5 +382,4 @@ model_withdraw_tx_envelope.go
 model_withdrawal.go
 model_withdrawal_header.go
 response.go
-test/api_default_test.go
 utils.go
