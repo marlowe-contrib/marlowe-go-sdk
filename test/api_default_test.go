@@ -11,20 +11,22 @@ package marloweruntime
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/marlowe-contrib/marlowe-go-sdk"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/marlowe-contrib/marlowe-go-sdk"
 )
 
 func Test_marloweruntime_DefaultAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
+	configuration.Servers[0].URL = "https://marlowe-runtime-preprod-web.scdev.aws.iohkdev.io"
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test DefaultAPIService ApplyInputsToContract", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var contractId string
 
@@ -38,7 +40,7 @@ func Test_marloweruntime_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService CreateContract", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.CreateContract(context.Background()).Execute()
 
@@ -50,7 +52,7 @@ func Test_marloweruntime_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService CreateContractSources", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.CreateContractSources(context.Background()).Execute()
 
@@ -62,9 +64,7 @@ func Test_marloweruntime_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService GetContractById", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
-
-		var contractId string
+		contractId := "e74ec98ac5a95f2288bac3eaf563669440f271115634deb8af7db2a463869b00#1"
 
 		resp, httpRes, err := apiClient.DefaultAPI.GetContractById(context.Background(), contractId).Execute()
 
@@ -76,9 +76,7 @@ func Test_marloweruntime_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService GetContractSourceAdjacency", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
-
-		var contractSourceId string
+		contractSourceId := "923918e403bf43c34b4ef6b48eb2ee04babed17320d8d1b9ff9ad086e86f44ec"
 
 		resp, httpRes, err := apiClient.DefaultAPI.GetContractSourceAdjacency(context.Background(), contractSourceId).Execute()
 
@@ -90,9 +88,7 @@ func Test_marloweruntime_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService GetContractSourceById", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
-
-		var contractSourceId string
+		contractSourceId := "923918e403bf43c34b4ef6b48eb2ee04babed17320d8d1b9ff9ad086e86f44ec"
 
 		resp, httpRes, err := apiClient.DefaultAPI.GetContractSourceById(context.Background(), contractSourceId).Execute()
 
@@ -104,11 +100,11 @@ func Test_marloweruntime_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService GetContractSourceClosure", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		contractSourceId := "923918e403bf43c34b4ef6b48eb2ee04babed17320d8d1b9ff9ad086e86f44ec"
 
-		var contractSourceId string
-
-		resp, httpRes, err := apiClient.DefaultAPI.GetContractSourceClosure(context.Background(), contractSourceId).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.
+			GetContractSourceClosure(context.Background(), contractSourceId).
+			Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -118,12 +114,12 @@ func Test_marloweruntime_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService GetContractTransactionById", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		contractId := "06fb28e1322bb2d366617e6fbaed22ed93a8ca2b813964ade5621c4b8fba1ee8#1"
+		transactionId := "981455f49fe566765d8380ad2199ee265ab9128902630780d4d7258a40c9d310"
 
-		var contractId string
-		var transactionId string
-
-		resp, httpRes, err := apiClient.DefaultAPI.GetContractTransactionById(context.Background(), contractId, transactionId).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.
+			GetContractTransactionById(context.Background(), contractId, transactionId).
+			Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -133,23 +129,24 @@ func Test_marloweruntime_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService GetContracts", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.GetContracts(context.Background()).Execute()
-
+		resp, httpRes, err := apiClient.DefaultAPI.
+			GetContracts(context.Background()).
+			Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+		assert.Less(t, httpRes.StatusCode, 300)
 
 	})
 
 	t.Run("Test DefaultAPIService GetNextStepsForContract", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		contractId := "26a9d99e3a014b7dafc21642c829b5f51edd8f74f45f13d965e967df182156eb#1"
 
-		var contractId string
-
-		resp, httpRes, err := apiClient.DefaultAPI.GetNextStepsForContract(context.Background(), contractId).Execute()
+		resp, httpRes, err := apiClient.DefaultAPI.
+			GetNextStepsForContract(context.Background(), contractId).
+			ValidityStart("1970-12-06T00:00:00.000Z").
+			ValidityEnd("2050-01-01T00:00:00.000Z").
+			Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -159,9 +156,7 @@ func Test_marloweruntime_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService GetPayoutById", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
-
-		var payoutId string
+		payoutId := "3125099354d820af7711ebcf12eaa6b81488417fbd0babf7e87b3ec0ad5228a1#2"
 
 		resp, httpRes, err := apiClient.DefaultAPI.GetPayoutById(context.Background(), payoutId).Execute()
 
@@ -173,35 +168,30 @@ func Test_marloweruntime_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService GetPayouts", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.DefaultAPI.GetPayouts(context.Background()).Execute()
-
+		resp, httpRes, err := apiClient.DefaultAPI.
+			GetPayouts(context.Background()).
+			Execute()
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+		assert.Equal(t, 206, httpRes.StatusCode)
 
 	})
 
 	t.Run("Test DefaultAPIService GetTransactionsForContract", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
-
-		var contractId string
+		contractId := "06fb28e1322bb2d366617e6fbaed22ed93a8ca2b813964ade5621c4b8fba1ee8#1"
 
 		resp, httpRes, err := apiClient.DefaultAPI.GetTransactionsForContract(context.Background(), contractId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+		assert.Equal(t, 206, httpRes.StatusCode)
 
 	})
 
 	t.Run("Test DefaultAPIService GetWithdrawalById", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
-
-		var withdrawalId string
+		withdrawalId := "e68b8034f4d93c4e53468198abdcbe938d067605310ece35ebe681d61c961e1c"
 
 		resp, httpRes, err := apiClient.DefaultAPI.GetWithdrawalById(context.Background(), withdrawalId).Execute()
 
@@ -213,19 +203,15 @@ func Test_marloweruntime_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService GetWithdrawals", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
-
 		resp, httpRes, err := apiClient.DefaultAPI.GetWithdrawals(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+		assert.Equal(t, 206, httpRes.StatusCode)
 
 	})
 
 	t.Run("Test DefaultAPIService Healthcheck", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.DefaultAPI.Healthcheck(context.Background()).Execute()
 
@@ -236,7 +222,7 @@ func Test_marloweruntime_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService SubmitContract", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var contractId string
 
@@ -249,7 +235,7 @@ func Test_marloweruntime_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService SubmitContractTransaction", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var contractId string
 		var transactionId string
@@ -263,7 +249,7 @@ func Test_marloweruntime_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService SubmitWithdrawal", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var withdrawalId string
 
@@ -276,7 +262,7 @@ func Test_marloweruntime_DefaultAPIService(t *testing.T) {
 
 	t.Run("Test DefaultAPIService WithdrawPayouts", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.DefaultAPI.WithdrawPayouts(context.Background()).Execute()
 
