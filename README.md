@@ -1,4 +1,5 @@
 # marlowe-go-sdk
+
 This library is meant to make your interaction with Marlowe Contracts much easier through an abstraction of the Marlowe Runtime REST API.
 
 ## Usage
@@ -48,3 +49,7 @@ npx @openapitools/openapi-generator-cli validate -i openapi.json
 ## Versioning
 
 Refer to the releases page to see which is compatible with each Marlowe Runtime REST API version.
+
+## License
+
+This package is under the Apache-2.0 license.
